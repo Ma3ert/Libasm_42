@@ -2,8 +2,6 @@ SECTION .text
 global ft_strlen
 
 ft_strlen:
-    push rbp        ; set the base pointer
-    mov  rbp, rsp
     mov rax, 0      ; initialize rax to 0
 
 ft_strlen_loop:
@@ -16,6 +14,4 @@ ft_strlen_loop:
     jmp ft_strlen_loop
 
 ft_strlen_end:
-    mov rsp, rbp
-    pop rbp
     ret
