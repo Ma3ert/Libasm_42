@@ -1,5 +1,5 @@
 SECTION .text
-extern ___errno
+extern __errno_location
 global ft_read
 
 ft_read:
@@ -13,7 +13,7 @@ ft_read:
 ft_read_error:
     neg rax         ; negate rax to get the positive value
     push rax        ; push the rax (error code from syscall) into the stack to access it later
-    call ___errno_location   ; call __error to get the errno location 
+    call __errno_location wrt ..plt  ; call __error to get the errno location 
     pop rdx         ; restore the error code from the stack into rdx
     mov [rax], rdx  ; put the value that on rdx at the address that __error returned in rax
     ret
